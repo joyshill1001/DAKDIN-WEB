@@ -1,0 +1,84 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --safe-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+html,
+body {
+  min-height: 100%;
+}
+
+body {
+  font-family: 'Hind Siliguri', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  color: #3a2a1e;
+  background: linear-gradient(180deg, #ffd9b5 0%, #ffead6 38%, #fff7ef 100%) fixed;
+  -webkit-tap-highlight-color: transparent;
+  overflow-x: hidden;
+}
+
+* {
+  -webkit-font-smoothing: antialiased;
+}
+
+@layer components {
+  .card {
+    @apply rounded-3xl border border-white/80 bg-white/85 shadow-card;
+  }
+  .btn {
+    @apply inline-flex min-h-[48px] items-center justify-center gap-2 rounded-2xl px-5 text-[15.5px] font-semibold transition active:scale-[.98] disabled:cursor-not-allowed disabled:opacity-60;
+  }
+  .btn-primary {
+    @apply btn bg-brand text-white shadow-float hover:bg-brand2;
+  }
+  .btn-soft {
+    @apply btn bg-soft text-brand hover:bg-[#ffe0c8];
+  }
+  .btn-ghost {
+    @apply btn border border-line bg-white/80 text-ink hover:bg-white;
+  }
+  .btn-danger {
+    @apply btn bg-danger text-white;
+  }
+  .input {
+    @apply min-h-[48px] w-full rounded-2xl border border-line bg-white px-4 text-[15.5px] text-ink outline-none placeholder:text-muted/60 focus:border-brand focus:ring-2 focus:ring-brand/20;
+  }
+  .label {
+    @apply mb-1.5 block text-[13.5px] font-semibold text-muted;
+  }
+  .chip {
+    @apply inline-flex items-center gap-1 whitespace-nowrap rounded-full border border-line bg-white px-3.5 py-1.5 text-[13.5px] font-medium text-ink;
+  }
+  .chip-on {
+    @apply border-brand bg-brand text-white;
+  }
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  scrollbar-width: none;
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+.rise {
+  animation: rise 0.35s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .rise {
+    animation: none;
+  }
+}
